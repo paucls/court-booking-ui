@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ClarityModule } from '@clr/angular';
+import { CalendarModule } from 'angular-calendar';
 
 import { AppComponent } from './app.component';
-import { CalendarModule } from 'angular-calendar';
 import { CourtScheduleComponent } from './court-schedule/court-schedule.component';
 
 
@@ -13,6 +14,7 @@ import { CourtScheduleComponent } from './court-schedule/court-schedule.componen
   ],
   imports: [
     BrowserModule,
+    ClarityModule,
     CalendarModule.forRoot()
   ],
   providers: [],
