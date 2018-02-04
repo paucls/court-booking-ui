@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { ClarityModule } from '@clr/angular';
 import { CalendarModule } from 'angular-calendar';
 
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
+    HttpClientModule,
     ClarityModule,
     CalendarModule.forRoot()
   ],

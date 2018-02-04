@@ -7,7 +7,11 @@ import { BookingsService } from './bookings.service';
 })
 export class MyBookingsComponent implements OnInit {
 
+  static bookingConfirmed = 'Booking confirmed successfully';
+  static bookingCancelled = 'Booking cancelled successfully';
+
   bookings: Booking[];
+  alertSuccessContent = '';
 
   constructor(private bookingsService: BookingsService) { }
 
@@ -16,4 +20,17 @@ export class MyBookingsComponent implements OnInit {
       .subscribe(bookings => this.bookings = bookings);
   }
 
+  confirmBooking(bookingId: string) {
+    this.bookingsService.confirmBooking(bookingId)
+      .subscribe(() => this.alertSuccessContent = MyBookingsComponent.bookingConfirmed);
+  }
+
+  cancelBooking(bookingId: string) {
+    this.bookingsService.cancelBooking(bookingId)
+      .subscribe(() => this.alertSuccessContent = MyBookingsComponent.bookingCancelled);
+  }
+
+  closeAlertSuccess() {
+    this.alertSuccessContent = '';
+  }
 }

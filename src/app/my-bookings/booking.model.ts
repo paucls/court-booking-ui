@@ -6,4 +6,5 @@ interface Booking {
   day: Date;
   startTime: Date;
   endTime: Date;
+  status: string;
 }

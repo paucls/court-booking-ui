@@ -16,10 +16,14 @@
     </div>
   </div>
   <div class="card-footer">
-    <button class="btn btn-sm btn-link">
+    <button class="btn btn-sm btn-link"
+            (click)="confirm()"
+            [disabled]="booking.status === 'CONFIRMED'">
       Confirm
     </button>
-    <button class="btn btn-sm btn-link">
+    <button class="btn btn-sm btn-link"
+            (click)="cancel()"
+            [disabled]="booking.status === 'CANCELLED'">
       Cancel
     </button>
   </div>
