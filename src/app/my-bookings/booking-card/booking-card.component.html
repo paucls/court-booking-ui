@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-block">
+    <div class="card-media-block">
+      <clr-icon shape="flag" class="card-media-image"></clr-icon>
+      <div class="card-media-description">
+        <span class="card-media-title">
+          {{booking.courtName}}
+        </span>
+        <span class="card-media-text">
+          Date: {{booking.day | date:'fullDate'}}
+        </span>
+        <span class="card-media-text">
+          Time: {{booking.startTime | date:'shortTime'}} - {{booking.endTime | date:'shortTime'}}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-sm btn-link">
+      Confirm
+    </button>
+    <button class="btn btn-sm btn-link">
+      Cancel
+    </button>
+  </div>
+</div>

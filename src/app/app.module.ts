@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { CourtsAvailabilityComponent } from './courts-availability/courts-availability.component';
 import { CourtScheduleComponent } from './courts-availability/court-schedule/court-schedule.component';
 import { MyBookingsComponent } from './my-bookings/my-bookings.component';
+import { BookingsService } from './my-bookings/bookings.service';
+import { BookingCardComponent } from './my-bookings/booking-card/booking-card.component';
 
 const appRoutes: Routes = [
   {path: 'courts-availability', component: CourtsAvailabilityComponent},
@@ -19,7 +21,8 @@ const appRoutes: Routes = [
     AppComponent,
     CourtsAvailabilityComponent,
     CourtScheduleComponent,
-    MyBookingsComponent
+    MyBookingsComponent,
+    BookingCardComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,9 @@ const appRoutes: Routes = [
     ClarityModule,
     CalendarModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    BookingsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
