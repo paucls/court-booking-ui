@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
 
 @Component({
-  selector: 'app-court-schedule',
-  templateUrl: './court-schedule.component.html',
-  styleUrls: ['./court-schedule.component.css']
+  selector: 'app-courts-availability',
+  templateUrl: './courts-availability.component.html'
 })
-export class CourtScheduleComponent implements OnInit {
+export class CourtsAvailabilityComponent implements OnInit {
 
   view = 'day';
   viewDate: Date = new Date(2018, 2, 1);
@@ -14,18 +13,16 @@ export class CourtScheduleComponent implements OnInit {
     {
       start: new Date(2018, 2, 1, 14, 0),
       end: new Date(2018, 2, 1, 14, 40),
-      title: 'Booked',
+      title: 'John Doe',
       color: {primary: '#e3bc08', secondary: '#FDF1BA'}
     },
     {
       start: new Date(2018, 2, 1, 16, 0),
       end: new Date(2018, 2, 1, 16, 40),
-      title: 'Booked',
+      title: 'Mary Johns',
       color: {primary: '#e3bc08', secondary: '#FDF1BA'}
     }
   ];
-
-  constructor() { }
 
   ngOnInit() {
   }

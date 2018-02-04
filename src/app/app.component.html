@@ -7,14 +7,18 @@
       </a>
     </div>
     <div class="header-nav">
-      <a class="active nav-link"><span class="nav-text">Courts Schedule</span></a>
-      <a class="nav-link"><span class="nav-text">My Bookings</span></a>
+      <a class="nav-link" routerLink="courts-availability" routerLinkActive="active">
+        <span class="nav-text">Courts Availability</span>
+      </a>
+      <a class="nav-link" routerLink="my-bookings" routerLinkActive="active">
+        <span class="nav-text">My Bookings</span>
+      </a>
     </div>
   </header>
   <div class="content-container">
     <div class="content-area">
 
-      <app-court-schedule></app-court-schedule>
+      <router-outlet></router-outlet>
 
     </div>
   </div>

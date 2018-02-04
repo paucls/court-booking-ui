@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CalendarModule } from 'angular-calendar';
 
 import { CourtScheduleComponent } from './court-schedule.component';
-import { CalendarModule } from 'angular-calendar';
 
 describe('CourtScheduleComponent', () => {
   let component: CourtScheduleComponent;
@@ -11,19 +11,22 @@ describe('CourtScheduleComponent', () => {
     TestBed.configureTestingModule({
       imports: [CalendarModule.forRoot()],
       declarations: [CourtScheduleComponent]
-    }).compileComponents();
+    })
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CourtScheduleComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should render title containing court number', async(() => {
+    component.courtName = 'Court 1';
+    component.events = [];
     fixture.detectChanges();
+
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h2').textContent).toContain('Schedule Court 1');
+    expect(compiled.querySelector('h3').textContent).toContain('Court 1');
   }));
 
 });
