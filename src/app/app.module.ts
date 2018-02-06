@@ -14,7 +14,8 @@ import { BookingCardComponent } from './my-bookings/booking-card/booking-card.co
 
 const appRoutes: Routes = [
   {path: 'courts-availability', component: CourtsAvailabilityComponent},
-  {path: 'my-bookings', component: MyBookingsComponent}
+  {path: 'my-bookings', component: MyBookingsComponent},
+  {path: '', redirectTo: 'courts-availability', pathMatch: 'full'}
 ];
 
 @NgModule({

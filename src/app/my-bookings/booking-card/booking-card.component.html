@@ -7,10 +7,10 @@
           {{booking.courtName}}
         </span>
         <span class="card-media-text">
-          Date: {{booking.day | date:'fullDate'}}
+          Date: {{booking.start | date:'fullDate'}}
         </span>
         <span class="card-media-text">
-          Time: {{booking.startTime | date:'shortTime'}} - {{booking.endTime | date:'shortTime'}}
+          Time: {{booking.start | date:'shortTime'}} - {{booking.end | date:'shortTime'}}
         </span>
       </div>
     </div>

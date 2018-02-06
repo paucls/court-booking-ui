@@ -3,8 +3,7 @@ interface Booking {
   memberId: string;
   courtId: string;
   courtName: string;
-  day: Date;
-  startTime: Date;
-  endTime: Date;
+  start: Date;
+  end: Date;
   status: string;
 }
