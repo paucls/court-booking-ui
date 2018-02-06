@@ -12,6 +12,9 @@
         <span class="card-media-text">
           Time: {{booking.start | date:'shortTime'}} - {{booking.end | date:'shortTime'}}
         </span>
+        <span class="card-media-text">
+          Status: {{booking.status.toLowerCase()}}
+        </span>
       </div>
     </div>
   </div>

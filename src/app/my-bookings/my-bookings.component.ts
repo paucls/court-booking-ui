@@ -16,18 +16,28 @@ export class MyBookingsComponent implements OnInit {
   constructor(private bookingsService: BookingsService) { }
 
   ngOnInit() {
+    this.loadBookings();
+  }
+
+  private loadBookings() {
     this.bookingsService.getBookings()
       .subscribe(bookings => this.bookings = bookings);
   }
 
   confirmBooking(bookingId: string) {
     this.bookingsService.confirmBooking(bookingId)
-      .subscribe(() => this.alertSuccessContent = MyBookingsComponent.bookingConfirmed);
+      .subscribe(() => {
+        this.alertSuccessContent = MyBookingsComponent.bookingConfirmed;
+        this.loadBookings();
+      });
   }
 
   cancelBooking(bookingId: string) {
     this.bookingsService.cancelBooking(bookingId)
-      .subscribe(() => this.alertSuccessContent = MyBookingsComponent.bookingCancelled);
+      .subscribe(() => {
+        this.alertSuccessContent = MyBookingsComponent.bookingCancelled;
+        this.loadBookings();
+      });
   }
 
   closeAlertSuccess() {
