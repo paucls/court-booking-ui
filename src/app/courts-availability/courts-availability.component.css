@@ -1,0 +1,17 @@
+.date-selector {
+  margin: 1rem 0 1rem;
+  text-align: center;
+  font-size: .9rem;
+}
+
+.date-selector > .left-button {
+  text-align: right;
+}
+
+.date-selector > .right-button {
+  text-align: left;
+}
+
+button {
+  margin: 0;
+}

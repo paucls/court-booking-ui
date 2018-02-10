@@ -3,7 +3,8 @@ import { CalendarEvent } from 'angular-calendar';
 
 @Component({
   selector: 'app-courts-availability',
-  templateUrl: './courts-availability.component.html'
+  templateUrl: './courts-availability.component.html',
+  styleUrls: ['./courts-availability.component.css']
 })
 export class CourtsAvailabilityComponent implements OnInit {
 
@@ -27,4 +28,11 @@ export class CourtsAvailabilityComponent implements OnInit {
   ngOnInit() {
   }
 
+  viewNextDate() {
+    this.viewDate = new Date(this.viewDate.setDate(this.viewDate.getDate() + 1));
+  }
+
+  viewPreviousDate() {
+    this.viewDate = new Date(this.viewDate.setDate(this.viewDate.getDate() - 1));
+  }
 }
