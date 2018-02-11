@@ -11,6 +11,7 @@ import { CourtScheduleComponent } from './courts-availability/court-schedule/cou
 import { MyBookingsComponent } from './my-bookings/my-bookings.component';
 import { BookingsService } from './my-bookings/bookings.service';
 import { BookingCardComponent } from './my-bookings/booking-card/booking-card.component';
+import { CourtsService } from './courts-availability/courts.service';
 
 const appRoutes: Routes = [
   {path: 'courts-availability', component: CourtsAvailabilityComponent},
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     CalendarModule.forRoot()
   ],
   providers: [
-    BookingsService
+    BookingsService,
+    CourtsService
   ],
   bootstrap: [AppComponent]
 })

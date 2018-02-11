@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
+import { CourtsService } from './courts.service';
+import { Court } from './court.model';
+import { DEMO_CLUB_ID } from '../app.constants';
 
 @Component({
   selector: 'app-courts-availability',
@@ -24,8 +27,12 @@ export class CourtsAvailabilityComponent implements OnInit {
       color: {primary: '#e3bc08', secondary: '#FDF1BA'}
     }
   ];
+  courts: Court[];
+
+  constructor(private courtsService: CourtsService) { }
 
   ngOnInit() {
+    this.courtsService.getCourts(DEMO_CLUB_ID).subscribe(courts => this.courts = courts);
   }
 
   viewNextDate() {
