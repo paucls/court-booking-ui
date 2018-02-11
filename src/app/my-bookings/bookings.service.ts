@@ -3,13 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
+import { Booking } from './booking.model';
+
 @Injectable()
 export class BookingsService {
 
   constructor(private http: HttpClient) {}
 
-  getBookings(): Observable<Booking[]> {
-    const url = '/api/bookings';
+  getBookings(clubId: string): Observable<Booking[]> {
+    const url = `/api/${clubId}/bookings`;
     return this.http.get<Booking[]>(url);
   }
 

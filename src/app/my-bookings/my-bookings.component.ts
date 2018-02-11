@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingsService } from './bookings.service';
+import { Booking } from './booking.model';
+import { DEMO_CLUB_ID } from '../app.constants';
 
 @Component({
   selector: 'app-my-bookings',
@@ -20,7 +22,7 @@ export class MyBookingsComponent implements OnInit {
   }
 
   private loadBookings() {
-    this.bookingsService.getBookings()
+    this.bookingsService.getBookings(DEMO_CLUB_ID)
       .subscribe(bookings => this.bookings = bookings);
   }
 
