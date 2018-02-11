@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CalendarModule } from 'angular-calendar';
 
 import { CourtScheduleComponent } from './court-schedule.component';
+import { Court } from '../court.model';
 
 describe('CourtScheduleComponent', () => {
   let component: CourtScheduleComponent;
@@ -21,7 +22,7 @@ describe('CourtScheduleComponent', () => {
   });
 
   it('should render title containing court number', async(() => {
-    component.courtName = 'Court 1';
+    component.court = {name: 'Court 1'} as Court;
     component.events = [];
     fixture.detectChanges();
 
