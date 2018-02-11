@@ -9,17 +9,17 @@ export class BookingsService {
   constructor(private http: HttpClient) {}
 
   getBookings(): Observable<Booking[]> {
-    const url = '/bookings';
+    const url = '/api/bookings';
     return this.http.get<Booking[]>(url);
   }
 
   confirmBooking(bookingId: string): Observable<Booking> {
-    const url = `/bookings/${bookingId}/confirm`;
+    const url = `/api/bookings/${bookingId}/confirm`;
     return this.http.post<Booking>(url, bookingId);
   }
 
   cancelBooking(bookingId: string): Observable<Booking> {
-    const url = `/bookings/${bookingId}/cancel`;
+    const url = `/api/bookings/${bookingId}/cancel`;
     return this.http.post<Booking>(url, bookingId);
   }
 
