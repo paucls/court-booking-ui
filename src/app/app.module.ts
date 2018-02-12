@@ -12,6 +12,7 @@ import { MyBookingsComponent } from './my-bookings/my-bookings.component';
 import { BookingsService } from './my-bookings/bookings.service';
 import { BookingCardComponent } from './my-bookings/booking-card/booking-card.component';
 import { CourtsService } from './courts-availability/courts.service';
+import { CourtSchedulesService } from './courts-availability/court-schedules.service';
 
 const appRoutes: Routes = [
   {path: 'courts-availability', component: CourtsAvailabilityComponent},
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     BookingsService,
-    CourtsService
+    CourtsService,
+    CourtSchedulesService
   ],
   bootstrap: [AppComponent]
 })

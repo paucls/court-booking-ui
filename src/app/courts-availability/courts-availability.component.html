@@ -19,9 +19,7 @@
 </div>
 
 <div class="row">
-  <div class="col-xs" *ngFor="let court of courts">
-    <app-court-schedule [court]="court"
-                        [viewDate]="viewDate"
-                        [events]="events"></app-court-schedule>
+  <div class="col-xs" *ngFor="let schedule of courtSchedules">
+    <app-court-schedule [schedule]="schedule"></app-court-schedule>
   </div>
 </div>

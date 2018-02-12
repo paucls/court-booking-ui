@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CalendarModule } from 'angular-calendar';
 
 import { CourtScheduleComponent } from './court-schedule.component';
-import { Court } from '../court.model';
+import { CourtSchedule } from '../court-schedule.model';
 
 describe('CourtScheduleComponent', () => {
   let component: CourtScheduleComponent;
@@ -12,8 +12,7 @@ describe('CourtScheduleComponent', () => {
     TestBed.configureTestingModule({
       imports: [CalendarModule.forRoot()],
       declarations: [CourtScheduleComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,9 +20,8 @@ describe('CourtScheduleComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should render title containing court number', async(() => {
-    component.court = {name: 'Court 1'} as Court;
-    component.events = [];
+  it('should render title containing court name', async(() => {
+    component.schedule = {court: {name: 'Court 1'}, events: []} as CourtSchedule;
     fixture.detectChanges();
 
     const compiled = fixture.debugElement.nativeElement;

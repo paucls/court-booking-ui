@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CalendarEvent } from 'angular-calendar';
-import { CourtsService } from './courts.service';
-import { Court } from './court.model';
 import { DEMO_CLUB_ID } from '../app.constants';
+import { CourtSchedulesService } from './court-schedules.service';
+import { CourtSchedule } from './court-schedule.model';
 
 @Component({
   selector: 'app-courts-availability',
@@ -12,34 +11,29 @@ import { DEMO_CLUB_ID } from '../app.constants';
 export class CourtsAvailabilityComponent implements OnInit {
 
   view = 'day';
-  viewDate: Date = new Date(2018, 2, 1);
-  events: CalendarEvent[] = [
-    {
-      start: new Date(2018, 2, 1, 14, 0),
-      end: new Date(2018, 2, 1, 14, 40),
-      title: 'John Doe',
-      color: {primary: '#e3bc08', secondary: '#FDF1BA'}
-    },
-    {
-      start: new Date(2018, 2, 1, 16, 0),
-      end: new Date(2018, 2, 1, 16, 40),
-      title: 'Mary Johns',
-      color: {primary: '#e3bc08', secondary: '#FDF1BA'}
-    }
-  ];
-  courts: Court[];
+  viewDate: Date;
+  courtSchedules: CourtSchedule[];
 
-  constructor(private courtsService: CourtsService) { }
+  constructor(private courtSchedulesService: CourtSchedulesService) { }
 
   ngOnInit() {
-    this.courtsService.getCourts(DEMO_CLUB_ID).subscribe(courts => this.courts = courts);
+    this.viewDate = new Date();
+    this.loadCourtSchedules();
   }
 
   viewNextDate() {
     this.viewDate = new Date(this.viewDate.setDate(this.viewDate.getDate() + 1));
+    this.loadCourtSchedules();
   }
 
   viewPreviousDate() {
     this.viewDate = new Date(this.viewDate.setDate(this.viewDate.getDate() - 1));
+    this.loadCourtSchedules();
+  }
+
+  private loadCourtSchedules() {
+    const dayString = this.viewDate.toISOString().split('T')[0];
+    this.courtSchedulesService.getCourtSchedules(DEMO_CLUB_ID, dayString)
+      .subscribe(courtSchedules => this.courtSchedules = courtSchedules);
   }
 }

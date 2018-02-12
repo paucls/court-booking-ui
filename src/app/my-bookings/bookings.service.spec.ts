@@ -9,13 +9,13 @@ describe('BookingsService', () => {
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
-    const testBed = TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [BookingsService]
     });
 
-    bookingsService = testBed.get(BookingsService);
-    httpMock = testBed.get(HttpTestingController);
+    bookingsService = TestBed.get(BookingsService);
+    httpMock = TestBed.get(HttpTestingController);
   });
 
   afterEach(() => {
