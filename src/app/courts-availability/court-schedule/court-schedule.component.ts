@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
-import { CourtSchedule, Event } from '../court-schedule.model';
+import { CourtSchedule, Entry } from '../court-schedule.model';
 
 @Component({
   selector: 'app-court-schedule',
@@ -14,10 +14,10 @@ export class CourtScheduleComponent implements OnInit {
 
   ngOnInit(): void {
     this.viewDate = new Date(this.schedule.day);
-    this.calendarEvents = this.mapToCalendarEvents(this.schedule.events);
+    this.calendarEvents = this.mapToCalendarEvents(this.schedule.entries);
   }
 
-  private mapToCalendarEvents(events: Event[]) {
+  private mapToCalendarEvents(events: Entry[]) {
     return events.map(event => {
       return {
         start: new Date(event.start),

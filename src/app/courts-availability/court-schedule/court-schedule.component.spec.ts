@@ -21,7 +21,7 @@ describe('CourtScheduleComponent', () => {
   });
 
   it('should render title containing court name', async(() => {
-    component.schedule = {court: {name: 'Court 1'}, events: []} as CourtSchedule;
+    component.schedule = {court: {name: 'Court 1'}, entries: []} as CourtSchedule;
     fixture.detectChanges();
 
     const compiled = fixture.debugElement.nativeElement;

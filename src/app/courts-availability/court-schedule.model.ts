@@ -3,10 +3,10 @@ import { Court } from './court.model';
 export interface CourtSchedule {
   day: Date;
   court: Court;
-  events: Event[];
+  entries: Entry[];
 }
 
-export interface Event {
+export interface Entry {
   id: string;
   start: Date;
   end: Date;
