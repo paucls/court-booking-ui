@@ -3,5 +3,6 @@
   [viewDate]="viewDate"
   [events]="calendarEvents"
   [dayStartHour]="schedule.court.dayStarHour"
-  [dayEndHour]="schedule.court.dayEndHour">
+  [dayEndHour]="schedule.court.dayEndHour"
+  (hourSegmentClicked)="timeClicked($event)">
 </mwl-calendar-day-view>

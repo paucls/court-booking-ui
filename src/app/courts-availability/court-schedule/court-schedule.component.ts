@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
 import { CourtSchedule, Entry } from '../court-schedule.model';
 
@@ -8,6 +8,7 @@ import { CourtSchedule, Entry } from '../court-schedule.model';
 })
 export class CourtScheduleComponent implements OnInit {
   @Input() schedule: CourtSchedule;
+  @Output() availableTimeClicked = new EventEmitter<Date>();
 
   viewDate: Date;
   calendarEvents: CalendarEvent[] = [];
@@ -15,6 +16,19 @@ export class CourtScheduleComponent implements OnInit {
   ngOnInit(): void {
     this.viewDate = new Date(this.schedule.day);
     this.calendarEvents = this.mapToCalendarEvents(this.schedule.entries);
+  }
+
+  timeClicked({date}) {
+    if (this.isAvailableTime(date)) {
+      this.availableTimeClicked.emit(date);
+    }
+  }
+
+  private isAvailableTime(date: Date): boolean {
+    return !this.calendarEvents.some((calendarEvent) => {
+      return date.getTime() >= calendarEvent.start.getTime() &&
+        date.getTime() < calendarEvent.end.getTime();
+    });
   }
 
   private mapToCalendarEvents(events: Entry[]) {

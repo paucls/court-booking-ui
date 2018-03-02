@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { CalendarModule } from 'angular-calendar';
 
 import { CourtScheduleComponent } from './court-schedule.component';
@@ -26,6 +26,20 @@ describe('CourtScheduleComponent', () => {
 
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h3').textContent).toContain('Court 1');
+  }));
+
+  it('should raise available time clicked event', fakeAsync(() => {
+    const testDate = new Date();
+    let dateClicked;
+
+    component.availableTimeClicked.subscribe((date) => {
+      dateClicked = date;
+    });
+
+    component.timeClicked({date: testDate});
+    tick();
+
+    expect(dateClicked).toBe(testDate);
   }));
 
 });
