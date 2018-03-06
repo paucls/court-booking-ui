@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
-import { CourtSchedule, Entry } from '../court-schedule.model';
+import { CourtSchedule, CourtTime, Entry } from '../court-schedule.model';
 
 @Component({
   selector: 'app-court-schedule',
@@ -8,7 +8,7 @@ import { CourtSchedule, Entry } from '../court-schedule.model';
 })
 export class CourtScheduleComponent implements OnInit {
   @Input() schedule: CourtSchedule;
-  @Output() availableTimeClicked = new EventEmitter<Date>();
+  @Output() availableTimeClicked = new EventEmitter<CourtTime>();
 
   viewDate: Date;
   calendarEvents: CalendarEvent[] = [];
@@ -20,7 +20,7 @@ export class CourtScheduleComponent implements OnInit {
 
   timeClicked({date}) {
     if (this.isAvailableTime(date)) {
-      this.availableTimeClicked.emit(date);
+      this.availableTimeClicked.emit({court: this.schedule.court, date});
     }
   }
 

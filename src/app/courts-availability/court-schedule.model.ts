@@ -12,3 +12,8 @@ export interface Entry {
   end: Date;
   description: string;
 }
+
+export interface CourtTime {
+  court: Court;
+  date: Date;
+}

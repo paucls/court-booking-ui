@@ -2,7 +2,7 @@ import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core
 import { CalendarModule } from 'angular-calendar';
 
 import { CourtScheduleComponent } from './court-schedule.component';
-import { CourtSchedule } from '../court-schedule.model';
+import { Court } from '../court.model';
 
 describe('CourtScheduleComponent', () => {
   let component: CourtScheduleComponent;
@@ -21,7 +21,7 @@ describe('CourtScheduleComponent', () => {
   });
 
   it('should render title containing court name', async(() => {
-    component.schedule = {court: {name: 'Court 1'}, entries: []} as CourtSchedule;
+    component.schedule = {day: new Date(), court: {name: 'Court 1'} as Court, entries: []};
     fixture.detectChanges();
 
     const compiled = fixture.debugElement.nativeElement;
@@ -29,17 +29,18 @@ describe('CourtScheduleComponent', () => {
   }));
 
   it('should raise available time clicked event', fakeAsync(() => {
+    component.schedule = {day: new Date(), court: {name: 'Court 1'} as Court, entries: []};
     const testDate = new Date();
-    let dateClicked;
+    let courtTimeClicked;
 
-    component.availableTimeClicked.subscribe((date) => {
-      dateClicked = date;
+    component.availableTimeClicked.subscribe((courtTime) => {
+      courtTimeClicked = courtTime;
     });
 
     component.timeClicked({date: testDate});
     tick();
 
-    expect(dateClicked).toBe(testDate);
+    expect(courtTimeClicked).toEqual({court: component.schedule.court, date: testDate});
   }));
 
 });

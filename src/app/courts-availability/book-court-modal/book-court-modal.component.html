@@ -1,0 +1,22 @@
+<clr-modal [clrModalOpen]="true" [clrModalStaticBackdrop]="true" [clrModalClosable]="false">
+  <h3 class="modal-title">Book Court</h3>
+
+  <div class="modal-body">
+    <form #form="ngForm">
+
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button"
+            class="btn btn-outline cancel-button"
+            (click)="cancel()">
+      Cancel
+    </button>
+    <button type="button"
+            class="btn btn-primary create-button"
+            [disabled]="form.form.invalid">
+      OK
+    </button>
+  </div>
+</clr-modal>

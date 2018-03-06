@@ -14,6 +14,9 @@ export class CourtsAvailabilityComponent implements OnInit {
   viewDate: Date;
   courtSchedules: CourtSchedule[];
 
+  isBookCourtModalOpened = false;
+  courtTimeToBook: Date;
+
   constructor(private courtSchedulesService: CourtSchedulesService) { }
 
   ngOnInit() {
@@ -35,5 +38,14 @@ export class CourtsAvailabilityComponent implements OnInit {
     const dayString = this.viewDate.toISOString().split('T')[0];
     this.courtSchedulesService.getCourtSchedules(DEMO_CLUB_ID, dayString)
       .subscribe(courtSchedules => this.courtSchedules = courtSchedules);
+  }
+
+  openBookCourtModal(time: Date) {
+    this.isBookCourtModalOpened = true;
+    this.courtTimeToBook = time;
+  }
+
+  closeBookCourtModal() {
+    this.isBookCourtModalOpened = false;
   }
 }

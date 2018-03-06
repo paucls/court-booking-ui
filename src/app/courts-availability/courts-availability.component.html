@@ -20,6 +20,11 @@
 
 <div class="row">
   <div class="col-xs" *ngFor="let schedule of courtSchedules">
-    <app-court-schedule [schedule]="schedule"></app-court-schedule>
+    <app-court-schedule [schedule]="schedule"
+                        (availableTimeClicked)="openBookCourtModal($event)"></app-court-schedule>
   </div>
 </div>
+
+<app-book-court-modal [courtTimeToBook]="courtTimeToBook"
+                      (modalClosed)="closeBookCourtModal()"
+                      *ngIf="isBookCourtModalOpened"></app-book-court-modal>

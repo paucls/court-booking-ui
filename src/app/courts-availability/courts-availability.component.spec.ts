@@ -35,4 +35,22 @@ describe('CourtsAvailabilityComponent', () => {
     expect(component.courtSchedules).toEqual(courtSchedules);
   });
 
+  it('should open book court modal', () => {
+    const time = new Date();
+    expect(component.isBookCourtModalOpened).toBe(false);
+
+    component.openBookCourtModal(time);
+
+    expect(component.isBookCourtModalOpened).toBe(true);
+    expect(component.courtTimeToBook).toBe(time);
+  });
+
+  it('should close book court modal', () => {
+    component.isBookCourtModalOpened = true;
+
+    component.closeBookCourtModal();
+
+    expect(component.isBookCourtModalOpened).toBe(false);
+  });
+
 });
