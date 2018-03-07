@@ -3,9 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClarityModule } from '@clr/angular';
 import { CalendarModule } from 'angular-calendar';
+import { DateValueAccessorModule } from 'angular-date-value-accessor';
 
 import { AppComponent } from './app.component';
 import { CourtsAvailabilityComponent } from './courts-availability/courts-availability.component';
@@ -38,6 +39,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+    DateValueAccessorModule,
     ClarityModule,
     CalendarModule.forRoot()
   ],

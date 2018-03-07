@@ -15,5 +15,5 @@ export interface Entry {
 
 export interface CourtTime {
   court: Court;
-  date: Date;
+  startTime: Date;
 }

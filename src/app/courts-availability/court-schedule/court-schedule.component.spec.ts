@@ -40,7 +40,7 @@ describe('CourtScheduleComponent', () => {
     component.timeClicked({date: testDate});
     tick();
 
-    expect(courtTimeClicked).toEqual({court: component.schedule.court, date: testDate});
+    expect(courtTimeClicked).toEqual({court: component.schedule.court, startTime: testDate});
   }));
 
 });

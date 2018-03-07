@@ -20,7 +20,7 @@ export class CourtScheduleComponent implements OnInit {
 
   timeClicked({date}) {
     if (this.isAvailableTime(date)) {
-      this.availableTimeClicked.emit({court: this.schedule.court, date});
+      this.availableTimeClicked.emit({court: this.schedule.court, startTime: date});
     }
   }
 

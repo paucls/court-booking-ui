@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DEMO_CLUB_ID } from '../app.constants';
 import { CourtSchedulesService } from './court-schedules.service';
-import { CourtSchedule } from './court-schedule.model';
+import { CourtSchedule, CourtTime } from './court-schedule.model';
 
 @Component({
   selector: 'app-courts-availability',
@@ -15,7 +15,7 @@ export class CourtsAvailabilityComponent implements OnInit {
   courtSchedules: CourtSchedule[];
 
   isBookCourtModalOpened = false;
-  courtTimeToBook: Date;
+  courtTimeToBook: CourtTime;
 
   constructor(private courtSchedulesService: CourtSchedulesService) { }
 
@@ -40,9 +40,9 @@ export class CourtsAvailabilityComponent implements OnInit {
       .subscribe(courtSchedules => this.courtSchedules = courtSchedules);
   }
 
-  openBookCourtModal(time: Date) {
+  openBookCourtModal(courtTime: CourtTime) {
     this.isBookCourtModalOpened = true;
-    this.courtTimeToBook = time;
+    this.courtTimeToBook = courtTime;
   }
 
   closeBookCourtModal() {
