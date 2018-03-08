@@ -11,8 +11,11 @@ export class BookingsService {
   constructor(private http: HttpClient) {}
 
   getBookings(clubId: string): Observable<Booking[]> {
-    const url = `/api/${clubId}/bookings`;
-    return this.http.get<Booking[]>(url);
+    return this.http.get<Booking[]>(this.buildUrl(clubId));
+  }
+
+  createBooking(clubId: string, booking: Booking) {
+    return this.http.post<Booking>(this.buildUrl(clubId), booking);
   }
 
   confirmBooking(bookingId: string): Observable<Booking> {
@@ -23,6 +26,10 @@ export class BookingsService {
   cancelBooking(bookingId: string): Observable<Booking> {
     const url = `/api/bookings/${bookingId}/cancel`;
     return this.http.post<Booking>(url, bookingId);
+  }
+
+  private buildUrl(clubId: string) {
+    return `/api/${clubId}/bookings`;
   }
 
 }

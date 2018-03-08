@@ -34,4 +34,17 @@ describe('BookingsService', () => {
       .expectOne({method: 'GET', url: `/api/${clubId}/bookings`})
       .flush(bookings);
   });
+
+  it('should create booking', () => {
+    const clubId = 'club-id-1';
+    const booking = {courtId: 'court-1'} as Booking;
+
+    bookingsService.createBooking(clubId, booking).subscribe(response => {
+      expect(response).toBe(booking);
+    });
+
+    httpMock
+      .expectOne({method: 'POST', url: `/api/${clubId}/bookings`})
+      .flush(booking);
+  });
 });

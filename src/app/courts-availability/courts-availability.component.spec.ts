@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { CourtsAvailabilityComponent } from './courts-availability.component';
 import { CourtSchedulesService } from './court-schedules.service';
-import { CourtSchedule } from './court-schedule.model';
+import { CourtSchedule, CourtTime } from './court-schedule.model';
 
 describe('CourtsAvailabilityComponent', () => {
   let component: CourtsAvailabilityComponent;
@@ -36,13 +36,13 @@ describe('CourtsAvailabilityComponent', () => {
   });
 
   it('should open book court modal', () => {
-    const time = new Date();
+    const courtTime = {court: {}, startTime: new Date()} as CourtTime;
     expect(component.isBookCourtModalOpened).toBe(false);
 
-    component.openBookCourtModal(time);
+    component.openBookCourtModal(courtTime);
 
     expect(component.isBookCourtModalOpened).toBe(true);
-    expect(component.courtTimeToBook).toBe(time);
+    expect(component.courtTimeToBook).toBe(courtTime);
   });
 
   it('should close book court modal', () => {
