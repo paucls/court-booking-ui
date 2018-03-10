@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookingsService } from './bookings.service';
 import { Booking } from './booking.model';
 import { DEMO_CLUB_ID } from '../app.constants';
+import { Alert } from '../shared/alert/alert.model';
 
 @Component({
   selector: 'app-my-bookings',
@@ -9,11 +10,11 @@ import { DEMO_CLUB_ID } from '../app.constants';
 })
 export class MyBookingsComponent implements OnInit {
 
-  static bookingConfirmed = 'Booking confirmed successfully';
-  static bookingCancelled = 'Booking cancelled successfully';
+  static bookingConfirmed: Alert = {text: 'Booking confirmed successfully', severity: 'success'};
+  static bookingCancelled: Alert = {text: 'Booking cancelled successfully', severity: 'success'};
 
   bookings: Booking[];
-  alertSuccessContent = '';
+  showAlert: Alert;
 
   constructor(private bookingsService: BookingsService) { }
 
@@ -29,7 +30,7 @@ export class MyBookingsComponent implements OnInit {
   confirmBooking(bookingId: string) {
     this.bookingsService.confirmBooking(bookingId)
       .subscribe(() => {
-        this.alertSuccessContent = MyBookingsComponent.bookingConfirmed;
+        this.showAlert = MyBookingsComponent.bookingConfirmed;
         this.loadBookings();
       });
   }
@@ -37,12 +38,9 @@ export class MyBookingsComponent implements OnInit {
   cancelBooking(bookingId: string) {
     this.bookingsService.cancelBooking(bookingId)
       .subscribe(() => {
-        this.alertSuccessContent = MyBookingsComponent.bookingCancelled;
+        this.showAlert = MyBookingsComponent.bookingCancelled;
         this.loadBookings();
       });
   }
 
-  closeAlertSuccess() {
-    this.alertSuccessContent = '';
-  }
 }

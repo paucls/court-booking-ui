@@ -11,6 +11,8 @@ import { Alert } from '../shared/alert/alert.model';
 })
 export class CourtsAvailabilityComponent implements OnInit {
 
+  static courtBookedAlert: Alert = {text: 'Court booked successfully', severity: 'success'};
+
   view = 'day';
   viewDate: Date;
   courtSchedules: CourtSchedule[];
@@ -54,6 +56,6 @@ export class CourtsAvailabilityComponent implements OnInit {
   onCourtBooked() {
     this.loadCourtSchedules();
     this.closeBookCourtModal();
-    this.showAlert = {text: 'Court booked successfully', severity: 'success'};
+    this.showAlert = CourtsAvailabilityComponent.courtBookedAlert;
   }
 }
