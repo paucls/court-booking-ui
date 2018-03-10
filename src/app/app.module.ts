@@ -17,6 +17,7 @@ import { BookingCardComponent } from './my-bookings/booking-card/booking-card.co
 import { CourtsService } from './courts-availability/courts.service';
 import { CourtSchedulesService } from './courts-availability/court-schedules.service';
 import { BookCourtModalComponent } from './courts-availability/book-court-modal/book-court-modal.component';
+import { SharedModule } from './shared/shared.module';
 
 const appRoutes: Routes = [
   {path: 'courts-availability', component: CourtsAvailabilityComponent},
@@ -40,9 +41,10 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    DateValueAccessorModule,
     ClarityModule,
-    CalendarModule.forRoot()
+    CalendarModule.forRoot(),
+    DateValueAccessorModule,
+    SharedModule
   ],
   providers: [
     BookingsService,

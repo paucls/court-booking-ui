@@ -1,4 +1,4 @@
-import { async, ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { CalendarModule } from 'angular-calendar';
 import { Observable } from 'rxjs/Observable';

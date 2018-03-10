@@ -1,0 +1,7 @@
+<clr-alert [clrAlertType]="getAlertType()"
+           [clrAlertClosable]="false"
+           *ngIf="!!showAlert">
+  <div class="alert-item">
+    <span class="alert-text">{{showAlert.text}}</span>
+  </div>
+</clr-alert>
