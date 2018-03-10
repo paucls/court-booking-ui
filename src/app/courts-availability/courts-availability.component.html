@@ -27,4 +27,5 @@
 
 <app-book-court-modal [courtTimeToBook]="courtTimeToBook"
                       (modalClosed)="closeBookCourtModal()"
+                      (courtBooked)="onCourtBooked()"
                       *ngIf="isBookCourtModalOpened"></app-book-court-modal>

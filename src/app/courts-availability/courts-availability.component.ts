@@ -48,4 +48,9 @@ export class CourtsAvailabilityComponent implements OnInit {
   closeBookCourtModal() {
     this.isBookCourtModalOpened = false;
   }
+
+  onCourtBooked() {
+    this.loadCourtSchedules();
+    this.closeBookCourtModal();
+  }
 }

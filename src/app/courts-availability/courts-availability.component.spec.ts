@@ -53,4 +53,13 @@ describe('CourtsAvailabilityComponent', () => {
     expect(component.isBookCourtModalOpened).toBe(false);
   });
 
+  it('should reload schedules on court booked', () => {
+    spyOn(courtSchedulesService, 'getCourtSchedules').and.returnValue(Observable.of([]));
+    fixture.detectChanges();
+
+    component.onCourtBooked();
+
+    expect(courtSchedulesService.getCourtSchedules).toHaveBeenCalled();
+  });
+
 });

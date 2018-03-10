@@ -28,8 +28,9 @@
       Cancel
     </button>
     <button type="submit"
-            class="btn btn-primary create-button"
-            [disabled]="form.invalid">
+            class="btn btn-primary ok-button"
+            [disabled]="form.invalid"
+            (click)="submit()">
       OK
     </button>
   </div>
