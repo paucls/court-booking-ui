@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DEMO_CLUB_ID } from '../app.constants';
 import { CourtSchedulesService } from './court-schedules.service';
 import { CourtSchedule, CourtTime } from './court-schedule.model';
+import { Alert } from '../shared/alert/alert.model';
 
 @Component({
   selector: 'app-courts-availability',
@@ -14,6 +15,7 @@ export class CourtsAvailabilityComponent implements OnInit {
   viewDate: Date;
   courtSchedules: CourtSchedule[];
 
+  showAlert: Alert;
   isBookCourtModalOpened = false;
   courtTimeToBook: CourtTime;
 
@@ -52,5 +54,6 @@ export class CourtsAvailabilityComponent implements OnInit {
   onCourtBooked() {
     this.loadCourtSchedules();
     this.closeBookCourtModal();
+    this.showAlert = {text: 'Court booked successfully', severity: 'success'};
   }
 }

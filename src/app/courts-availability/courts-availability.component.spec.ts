@@ -62,4 +62,13 @@ describe('CourtsAvailabilityComponent', () => {
     expect(courtSchedulesService.getCourtSchedules).toHaveBeenCalled();
   });
 
+  it('should notify success on court booked', () => {
+    spyOn(courtSchedulesService, 'getCourtSchedules').and.returnValue(Observable.of([]));
+    fixture.detectChanges();
+
+    component.onCourtBooked();
+
+    expect(component.showAlert).toEqual({text: 'Court booked successfully', severity: 'success'});
+  });
+
 });

@@ -11,6 +11,9 @@ import { AlertComponent } from './alert/alert.component';
   ],
   declarations: [
     AlertComponent
+  ],
+  exports: [
+    AlertComponent
   ]
 })
 export class SharedModule {}
